@@ -11,3 +11,34 @@
 p {
     background-color: #609fa6;
 }
+
+a:link {
+    color: darkblue;
+}
+
+a:visited {
+    color: darkmagenta;
+    background-color: black;
+}
+
+a:hover {
+    background-color: window;
+    color: darkcyan;
+    border-radius: 30px;
+}
+
+a:active {
+    transition: 1s;
+    background-color: red;
+    color: black;
+}
+
+p:nth-child(even) {
+   background-color: red; 
+}
+
+p:nth-child(odd) {
+   background-color: greenyellow; 
+}
+
+    
