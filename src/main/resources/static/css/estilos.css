@@ -1,0 +1,13 @@
+#tituloPrincipa {
+    color: magenta;
+    font-family: sans-serif;
+}
+
+.parrafoSecundario {
+    color: black;
+    font-size: 22px;
+}
+
+p {
+    background-color: #609fa6;
+}
