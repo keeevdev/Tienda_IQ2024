@@ -40,8 +40,8 @@
                               method="POST" class="was-validated" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="idCategoria">[[#{producto.categoria}]]</label>
-                                    <select name="idProducto" class="form-control">
+                                    <label for="categoria.idCategoria">[[#{producto.categoria}]]</label>
+                                    <select name="categoria.idCategoria" class="form-control">
                                         <option th:each="item : ${categorias}" th:value="${item.idCategoria}">
                                             [[${item.descripcion}]]
                                         </option>
@@ -98,6 +98,7 @@
                                             <th>[[#{producto.descripcion}]]</th>
                                             <th>[[#{producto.precio}]]</th>
                                             <th>[[#{producto.existencias}]]</th>
+                                            <th>[[#{producto.categoria}]]</th>
                                             <th>[[#{producto.activo}]]</th>
                                             <th></th></tr>
                                     </thead>
@@ -107,6 +108,7 @@
                                             <td th:text="${producto.descripcion}"></td>
                                             <td>[[${producto.precio}]]</td>
                                             <td>[[${producto.existencias}]]</td>
+                                            <td>[[${producto.categoria.descripcion}]]</td>
                                             <td th:text="${producto.activo} ? 'Activo' : 'Inactivo'" />
                                             <td>
                                                 <a th:href="@{/producto/eliminar/}+${producto.idProducto}"
@@ -158,8 +160,8 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3">
-                                                    <label for="idCategoria">[[#{producto.categoria}]]</label>
-                                                    <select name="idCategoria" th:field="*{idCategoria}" class="form-control">
+                                                    <label for="categoria.idCategoria">[[#{producto.categoria}]]</label>
+                                                    <select name="categoria.idCategoria" th:field="*{categoria.idCategoria}" class="form-control">
                                                         <option th:each="item : ${categorias}" th:value="${item.idCategoria}">
                                                             [[${item.descripcion}]]
                                                         </option>
