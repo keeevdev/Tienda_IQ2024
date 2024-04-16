@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TechShop</title>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <div class="container">
+            <div class="row row-cols-6" >
+                <a th:href="@{/carrito/listado}" class="btn btn-primary">
+                    <i class='fas fa-reply'></i> [[#{accion.regresar}]]</a>
+            </div>
+            <div class="row row-cols-2">
+                <div class="card">
+                    <div class="card-header">[[#{carrito.datos}]]</div>
+                    <div class="card-body">
+                        <h5 class="card-title">[[${item.descripcion}]]</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-end">
+                            [[${item.precio}+' ('+${item.existencias}+')']]</h6>
+                        <p class="card-text">[[${item.detalle}]]</p>
+                    </div>
+                </div>
+                <div class="card">                    
+                    <div class="card-body">
+                        <figure><img th:src="@{${item.rutaImagen}}" width="120"/></figure>
+                        <form th:action="@{/carrito/guardar}"
+                              method="post"
+                              th:object="${item}">
+                            <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
+                            <div class="form-group">
+                                <label for="cantidad">[[#{carrito.cantidad}]]:</label>
+                                <input type="number" name="cantidad" th:field="*{cantidad}" 
+                                       min='1' th:max="${item.existencias}"/></div>                
+                            <div class="form-group">                    
+                                <button class="btn btn-success" type="submit" name="guardar">
+                                    <i class='fas fa-save'></i> [[#{accion.guardar}]]</button>
+                            </div>
+                        </form>
+                        <a th:href="@{/carrito/eliminar/}+${item.idProducto}"
+                           class="btn btn-danger">
+                            <i class='fas fa-trash'></i> [[#{accion.eliminar}]]
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+    </body>
+</html>
